@@ -1,1 +1,1 @@
-# Demo - [Game-Tracker](avg-gametracker.netlify.app)
+# Demo - [Game-Tracker](https://avg-gametracker.netlify.app)

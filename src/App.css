@@ -1,0 +1,152 @@
+#root {
+	margin: 0;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+.app {
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+}
+.NavBar {
+	border-bottom: #404040 solid 1px;
+}
+.navList{
+	font-size: 1rem;
+	font-weight: 400;
+	font-family: geist;
+	list-style-type: none;
+	display: flex;
+	margin: 0;
+	padding: 20px 0px;
+}
+ul > li {
+	width: fit-content;
+	cursor: pointer;
+	margin: 0px 10px;
+	padding: 7px 10px;
+	border-radius: 10px;
+	transition: all 0.5s;
+}
+ul > li:hover {
+	background-color: #007BFF;
+}
+.pricing {
+	position: relative;
+}
+.pricingHover {
+	width: 100px;
+	height: 50px;
+	font-family: inherit;
+	font-weight: 400;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	border: hsl(0, 0%, 30%) solid 1px;
+	position: absolute;
+	top: 65px;
+	left: -12px;
+	pointer-events: none;
+	padding: 4px;
+	border-radius: 7px;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.5s;
+	z-index: 50;
+} 
+/*For custom animation need to set --angle as a property and not var
+  refer to border animations "https://www.youtube.com/watch?v=ezP4kbOvs_E"*/
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.border {
+	width: 100px;
+	height: 50px;
+	position: absolute;
+	top: 63.25px;
+	left: -14.25px;
+	padding: 7px;
+	z-index: 49;
+	border-radius: 7px;
+  /*--angle to simulate */
+	background-image: conic-gradient(
+		from var(--angle) at 51% 67%,
+		#ff0000ff 0%,
+		#ffd900ff 20%,
+		#1eff00ff 40%,
+		#0039ffff 59%,
+		#ff00c2ff 80%,
+		#ff0000ff 100%
+	);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.1s;
+  
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 720deg;
+  }
+}
+
+.pricing:hover .pricingHover {
+	opacity: 1;
+	visibility: visible;
+}
+.pricing:hover .border {
+	opacity: 0.9;
+	visibility: visible;
+	transition: all 0.5s ease 0.25s;
+  animation: 2s spin cubic-bezier(0.75, 0.000, 0.010, 1) infinite 0.35s;
+}
+.mainBody{
+  height: 100%;
+  width: 100vw;
+  background-image: url('/src/assets/backlog.png');
+  background-repeat: repeat-x;
+  background-position: top;
+  /* add 30s */
+  animation: movingBackground 30s linear infinite;
+  z-index: -1;
+
+}
+@keyframes movingBackground {
+  from{
+    background-position: 0px 0%;
+  }
+  to{
+    background-position: -1800px 0%;
+  }
+  
+}
+.gradient{
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%),linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 75%);
+  z-index: 100;
+}
+.bodyList{
+  position: absolute;
+  text-align: left;
+  list-style: none;
+  font-family: geist;
+  font-size: 4rem;
+  font-weight: 900;
+}
+.gamesData{
+	height: 100%;
+  	width: 100vw;
+	transition: all 1s;
+}
+.gamesList{
+	height: 100px;
+}
